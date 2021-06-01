@@ -62,15 +62,18 @@ function colorePixel(event) {
   event.target.style.backgroundColor = corSelecionada.style.backgroundColor;
 }
 
-const pixels = document.querySelectorAll('.pixel');
-
-for (let index = 0; index < pixels.length; index += 1) {
-  pixels[index].addEventListener('click', colorePixel);
+function pixeisColoriveis() {
+  const pixels = document.querySelectorAll('.pixel');
+  for (let index = 0; index < pixels.length; index += 1) {
+    pixels[index].addEventListener('click', colorePixel);
+  }
 }
+pixeisColoriveis();
 
 const botaoClear = document.querySelector('button#clear-board');
 
 function limpaBoard() {
+  pixels = document.querySelectorAll('.pixel');
   for (let index = 0; index < pixels.length; index += 1) {
     pixels[index].style.backgroundColor = 'white';
   }
