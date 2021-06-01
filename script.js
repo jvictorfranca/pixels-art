@@ -108,9 +108,12 @@ const butInput = document.querySelector('#generate-board');
 
 function refazQuadro() {
   const numeral = input.value;
-  const corrigido = corrigeMaxMin(numeral);
-  criaQuadro(corrigido);
-  pixeisColoriveis();
+
+  if (input.value === '0') { alert('Board inválido!'); } else {
+    const corrigido = corrigeMaxMin(numeral);
+    criaQuadro(corrigido);
+    pixeisColoriveis();
+  }
 }
 
 butInput.addEventListener('click', refazQuadro);
