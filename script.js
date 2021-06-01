@@ -14,6 +14,17 @@ adicionaCor('red');
 adicionaCor('blue');
 adicionaCor('yellow');
 
+function generateRandomColor() {
+  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  const color = `#${randomColor}`;
+  return color;
+}
+// fonte: https://css-tricks.com/snippets/javascript/random-hex-color/
+
+adicionaCor(generateRandomColor());
+adicionaCor(generateRandomColor());
+adicionaCor(generateRandomColor());
+
 const n = 5;
 
 const quadro = document.querySelector('div#pixel-board');
