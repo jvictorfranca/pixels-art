@@ -8,9 +8,9 @@ function adicionaCor(cor) {
   paleta.appendChild(botaoCor);
 }
 adicionaCor('black');
-// adicionaCor('red');
-// adicionaCor('blue');
-// adicionaCor('yellow');
+adicionaCor('red');
+adicionaCor('blue');
+adicionaCor('yellow');
 
 function generateRandomColor() {
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);
