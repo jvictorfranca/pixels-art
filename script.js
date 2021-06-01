@@ -12,6 +12,7 @@ function adicionaCor(cor) {
 adicionaCor('black');
 adicionaCor('red');
 adicionaCor('blue');
+adicionaCor('yellow');
 
 const n = 5;
 
@@ -40,3 +41,6 @@ function criaQuadro(numero) {
   }
 }
 criaQuadro(n);
+
+const corPreta = document.querySelector('div#color-palette div');
+corPreta.className += 'selected';
