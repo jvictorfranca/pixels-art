@@ -14,7 +14,7 @@ adicionaCor('red');
 adicionaCor('blue');
 adicionaCor('yellow');
 
-const n = 12;
+const n = 5;
 
 const quadro = document.querySelector('div#pixel-board');
 
@@ -68,15 +68,38 @@ function pixeisColoriveis() {
     pixels[index].addEventListener('click', colorePixel);
   }
 }
+
 pixeisColoriveis();
 
 const botaoClear = document.querySelector('button#clear-board');
 
 function limpaBoard() {
-  pixels = document.querySelectorAll('.pixel');
+  const pixels = document.querySelectorAll('.pixel');
   for (let index = 0; index < pixels.length; index += 1) {
     pixels[index].style.backgroundColor = 'white';
   }
 }
 
 botaoClear.addEventListener('click', limpaBoard);
+
+function corrigeMaxMin(valor) {
+  let answer;
+  if (valor < 5) {
+    answer = 5;
+  } else if (valor > 50) {
+    answer = 50;
+  } else { answer = valor; }
+  return answer;
+}
+
+const input = document.querySelector('input');
+const butInput = document.querySelector('#generate-board');
+
+function refazQuadro() {
+  const numeral = input.value;
+  const corrigido = corrigeMaxMin(numeral);
+  criaQuadro(corrigido);
+  pixeisColoriveis();
+}
+
+butInput.addEventListener('click', refazQuadro);
