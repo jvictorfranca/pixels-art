@@ -30,7 +30,7 @@ function criaQuadro(numero) {
       const pixel = document.createElement('div');
       pixel.className = 'pixel';
       pixel.style.display = 'inline-block';
-
+      pixel.style.backgroundColor = 'white';
       pixel.style.height = tamanho;
       pixel.style.width = tamanho;
       console.log(tamanho);
