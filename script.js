@@ -52,9 +52,21 @@ function selecionaCor(event) {
     botaoCor[index].className = 'color';
   }
   event.target.className = 'color selected';
-  console.log(event.target);
 }
 
 for (let index = 0; index < botaoCor.length; index += 1) {
   botaoCor[index].addEventListener('click', selecionaCor);
+}
+
+function colorePixel(event) {
+  const corSelecionada = document.querySelector('div.selected');
+  event.target.style.backgroundColor = corSelecionada.style.backgroundColor;
+  console.log(event.target.style.backgroundColor);
+  console.log(corSelecionada.style.backgroundColor);
+}
+
+const pixels = document.querySelectorAll('.pixel');
+
+for (let index = 0; index < pixels.length; index += 1) {
+  pixels[index].addEventListener('click', colorePixel);
 }
