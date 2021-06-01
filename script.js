@@ -14,7 +14,7 @@ adicionaCor('red');
 adicionaCor('blue');
 adicionaCor('yellow');
 
-const n = 5;
+const n = 12;
 
 const quadro = document.querySelector('div#pixel-board');
 
@@ -33,7 +33,6 @@ function criaQuadro(numero) {
       pixel.style.backgroundColor = 'white';
       pixel.style.height = tamanho;
       pixel.style.width = tamanho;
-      console.log(tamanho);
       linha.appendChild(pixel);
     }
     linha.style.height = tamanho;
@@ -61,8 +60,6 @@ for (let index = 0; index < botaoCor.length; index += 1) {
 function colorePixel(event) {
   const corSelecionada = document.querySelector('div.selected');
   event.target.style.backgroundColor = corSelecionada.style.backgroundColor;
-  console.log(event.target.style.backgroundColor);
-  console.log(corSelecionada.style.backgroundColor);
 }
 
 const pixels = document.querySelectorAll('.pixel');
@@ -70,3 +67,13 @@ const pixels = document.querySelectorAll('.pixel');
 for (let index = 0; index < pixels.length; index += 1) {
   pixels[index].addEventListener('click', colorePixel);
 }
+
+const botaoClear = document.querySelector('button#clear-board');
+
+function limpaBoard() {
+  for (let index = 0; index < pixels.length; index += 1) {
+    pixels[index].style.backgroundColor = 'white';
+  }
+}
+
+botaoClear.addEventListener('click', limpaBoard);
