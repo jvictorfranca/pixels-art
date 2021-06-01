@@ -43,4 +43,18 @@ function criaQuadro(numero) {
 criaQuadro(n);
 
 const corPreta = document.querySelector('div#color-palette div');
-corPreta.className += 'selected';
+corPreta.className += ' selected';
+
+const botaoCor = document.querySelectorAll('div#color-palette div');
+
+function selecionaCor(event) {
+  for (let index = 0; index < botaoCor.length; index += 1) {
+    botaoCor[index].className = 'color';
+  }
+  event.target.className = 'color selected';
+  console.log(event.target);
+}
+
+for (let index = 0; index < botaoCor.length; index += 1) {
+  botaoCor[index].addEventListener('click', selecionaCor);
+}
