@@ -9,11 +9,6 @@ function adicionaCor(cor) {
   paleta.appendChild(botaoCor);
 }
 
-adicionaCor('black');
-adicionaCor('red');
-adicionaCor('blue');
-adicionaCor('yellow');
-
 function generateRandomColor() {
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);
   const color = `#${randomColor}`;
@@ -21,9 +16,13 @@ function generateRandomColor() {
 }
 // fonte: https://css-tricks.com/snippets/javascript/random-hex-color/
 
+adicionaCor('black');
 adicionaCor(generateRandomColor());
 adicionaCor(generateRandomColor());
 adicionaCor(generateRandomColor());
+// adicionaCor('red');
+// adicionaCor('blue');
+// adicionaCor('yellow');
 
 const n = 5;
 
@@ -109,7 +108,7 @@ const butInput = document.querySelector('#generate-board');
 function refazQuadro() {
   const numeral = input.value;
 
-  if (input.value === '0') { alert('Board inválido!'); } else {
+  if (input.value === '') { alert('Board inválido!'); } else {
     const corrigido = corrigeMaxMin(numeral);
     criaQuadro(corrigido);
     pixeisColoriveis();
