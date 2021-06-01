@@ -6,6 +6,7 @@
 }
 
 .pixel {
+
   /* height: 40px;
   width: 40px; */
   border: black solid 1px;
@@ -15,5 +16,4 @@
 
 .linha {
   border: red solid 1px;
-
 }
