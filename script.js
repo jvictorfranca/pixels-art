@@ -2,12 +2,15 @@ const paleta = document.querySelector('div#color-palette');
 function adicionaCor(cor) {
   const botaoCor = document.createElement('div');
   botaoCor.className = 'color';
-  // botaoCor.className += cor
   botaoCor.style.backgroundColor = cor;
   botaoCor.style.border = 'solid black 1px';
   botaoCor.style.display = 'inline-block';
   paleta.appendChild(botaoCor);
 }
+adicionaCor('black');
+// adicionaCor('red');
+// adicionaCor('blue');
+// adicionaCor('yellow');
 
 function generateRandomColor() {
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);
@@ -16,13 +19,9 @@ function generateRandomColor() {
 }
 // fonte: https://css-tricks.com/snippets/javascript/random-hex-color/
 
-adicionaCor('black');
 adicionaCor(generateRandomColor());
 adicionaCor(generateRandomColor());
 adicionaCor(generateRandomColor());
-// adicionaCor('red');
-// adicionaCor('blue');
-// adicionaCor('yellow');
 
 const n = 5;
 
