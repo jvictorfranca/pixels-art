@@ -49,8 +49,10 @@ div#color-palette {
   margin: auto;
   width: fit-content;
   background-color: rgb(230, 230, 230);
-  align-items: center;
-  padding-left: ;
+  align: center;
+  display: inline-block;
+  width: 180px;
+  padding-bottom: auto;
 }
 
 .separar {
@@ -60,7 +62,7 @@ div#color-palette {
 
 #salvar {
   width: fit-content;
-  margin:auto;
+  margin: auto;
 }
 
 .save{
@@ -72,4 +74,37 @@ div#color-palette {
 
 .save:hover {
   opacity: 0.5;
+}
+
+#gera-cor {
+  background-color: rgb(230, 230, 230);
+  width: 200px;
+  height: 100px;
+  display: inline-block;
+  margin: auto;
+  margin-left: 100px;
+  position: absolute;
+}
+
+#alinha{
+  background-color: orange;
+  margin: auto;
+  width: fit-content;
+}
+
+#generate-button {
+  display: block;
+  margin: auto;
+  width: fit-content;
+  margin-top: 10px;
+}
+
+#generate-input{
+display: block;
+margin: auto;
+background-color: rgb(230, 230, 230);
+border: none;
+padding: 0;
+margin-top: 10px;
+height: 40px;
 }

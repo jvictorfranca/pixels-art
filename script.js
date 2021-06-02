@@ -11,6 +11,7 @@ adicionaCor('red');
 adicionaCor('blue');
 adicionaCor('yellow');
 
+
 function generateRandomColor() {
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);
   const color = `#${randomColor}`;
@@ -18,9 +19,6 @@ function generateRandomColor() {
 }
 // fonte: https://css-tricks.com/snippets/javascript/random-hex-color/
 
-adicionaCor(generateRandomColor());
-adicionaCor(generateRandomColor());
-adicionaCor(generateRandomColor());
 
 const n = 5;
 
@@ -52,18 +50,24 @@ criaQuadro(n);
 const corPreta = document.querySelector('div#color-palette div');
 corPreta.className += ' selected';
 
-const botaoCor = document.querySelectorAll('div#color-palette div');
+let botaoCor = document.querySelectorAll('div#color-palette div');
 
 function selecionaCor(event) {
+  let botaoCor = document.querySelectorAll('div#color-palette div');
   for (let index = 0; index < botaoCor.length; index += 1) {
     botaoCor[index].className = 'color';
   }
   event.target.className = 'color selected';
 }
 
-for (let index = 0; index < botaoCor.length; index += 1) {
-  botaoCor[index].addEventListener('click', selecionaCor);
+function funcionaCor() {
+  let botaoCor = document.querySelectorAll('div#color-palette div')
+  for (let index = 0; index < botaoCor.length; index += 1) {
+    botaoCor[index].addEventListener('click', selecionaCor);
+  }
 }
+
+funcionaCor()
 
 function colorePixel(event) {
   const corSelecionada = document.querySelector('div.selected');
@@ -100,7 +104,7 @@ function corrigeMaxMin(valor) {
   return answer;
 }
 
-const input = document.querySelector('input');
+const input = document.querySelector('#board-size');
 const butInput = document.querySelector('#generate-board');
 
 function refazQuadro() {
@@ -196,10 +200,23 @@ criaBotoesStorage()
 function refazMatriz(event){
   let codigo = event.target.innerText
   let array = JSON.parse(localStorage[codigo])
-  console.log(array)
 reconstoiMatriz(array)
 pixeisColoriveis()
 }
 
 
 
+function adicionaCorInput(event) {
+  const botaoCor = document.createElement('div');
+  const inputGerar = document.querySelector('#generate-input')
+  botaoCor.className = 'color';
+  botaoCor.style.backgroundColor = inputGerar.value;
+  console.log(event.target.value)
+  botaoCor.style.display = 'inline-block';
+  paleta.appendChild(botaoCor);
+  funcionaCor()
+}
+
+let botaoInput = document.querySelector('#generate-button')
+
+botaoInput.addEventListener('click', adicionaCorInput)
