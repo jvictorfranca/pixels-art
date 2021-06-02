@@ -3,7 +3,6 @@ function adicionaCor(cor) {
   const botaoCor = document.createElement('div');
   botaoCor.className = 'color';
   botaoCor.style.backgroundColor = cor;
-  botaoCor.style.border = 'solid black 1px';
   botaoCor.style.display = 'inline-block';
   paleta.appendChild(botaoCor);
 }
@@ -115,3 +114,88 @@ function refazQuadro() {
 }
 
 butInput.addEventListener('click', refazQuadro);
+
+
+//Adiciona saves Por aqui
+
+//Primeiro A função salva a matriz que está na borda em formato de uma array
+function salvaMatriz() {
+  let matriz = document.querySelectorAll('.pixel')
+  let array = [];
+  for (let index = 0; index < matriz.length ; index += 1){
+    array.push(matriz[index].style.backgroundColor)
+  }
+  return array
+}
+
+//Essa função reconstroi a função dada uma array no board
+function reconstoiMatriz(array){
+  let n = (array.length) ** (0.5) 
+  criaQuadro(n);
+  let pixels = document.querySelectorAll('.pixel')
+  for (let index = 0; index < array.length; index +=1){
+    pixels[index].style.backgroundColor = array[index]
+  }
+}
+
+//Essa função faz funcionar os botões, ou seja, da event list para todos
+//Está aqui porque precisa para funções futuras
+
+function funcionaBotão () {
+  let botoesStorage = document.querySelectorAll('.save')
+  for (let index = 0; index < botoesStorage.length; index+=1){
+    botoesStorage[index].addEventListener('click', refazMatriz)}
+  }
+
+  //Essa função cria uma divisão com o innertext do salve pelo imput quando se clica num botão
+  // Nota-se que usa o localStorage para salvar o array da matriz que está no quadro
+  // Por ultimo faz a função funcionaBotão, ou seja, faz aquele botão criado funcional
+function criaSalve(){
+  let input = document.querySelector('#saveinput')
+  let saves = document.querySelector('#salvar')
+  if (input.value.length === 0) {alert('Ponha um nome')}
+  else {
+    localStorage[input.value] = salvaMatriz()
+    let div = document.createElement('div')
+    div.className = 'save'
+    div.innerText = input.value
+    input.value = ''
+    saves.appendChild(div)
+  }
+  funcionaBotão()
+}
+
+// Aqui só faz o event listener do criaSalve para criar quando clica no botão Salvar
+let botaoSalvar = document.querySelector('#salve')
+
+botaoSalvar.addEventListener('click', criaSalve)
+
+
+
+// Essa função cria os botões no site quando carrega, já do localStorage (não clicando igual a ultima)
+// Nota-se que o innerText dos botões agora é a key da localStorage localStorage.key(index)
+function criaBotoesStorage(){
+  let saves = document.querySelector('#salvar')
+  for (let index = 0; index < localStorage.length ; index+=1){
+    let div = document.createElement('div')
+    div.innerText = localStorage.key(index)
+    div.className = 'save'
+    saves.appendChild(div)
+  }
+  funcionaBotão()
+}
+
+criaBotoesStorage()
+
+
+//Essa ultima função basicamente cria uma array do localStorage com o split(',') ; que faz a string quebrar em array em cada vírgula (,).
+//Nota-se que o event só serve para pegar o innerText da div salve e pesquisa-la no localStorage . É o valor para essa key (innerText da div) que será splitado.
+//Por fim usa a primeira função a partir da array feita
+function refazMatriz(event){
+  let array = (localStorage[event.target.innerText]).split(',')
+reconstoiMatriz(array)
+pixeisColoriveis()
+}
+
+
+
