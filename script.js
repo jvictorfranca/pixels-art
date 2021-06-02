@@ -155,7 +155,9 @@ function criaSalve(){
   let saves = document.querySelector('#salvar')
   if (input.value.length === 0) {alert('Ponha um nome')}
   else {
-    localStorage[input.value] = salvaMatriz()
+    let array = salvaMatriz() 
+    localStorage[input.value] = JSON.stringify(array)
+
     let div = document.createElement('div')
     div.className = 'save'
     div.innerText = input.value
@@ -192,7 +194,9 @@ criaBotoesStorage()
 //Nota-se que o event só serve para pegar o innerText da div salve e pesquisa-la no localStorage . É o valor para essa key (innerText da div) que será splitado.
 //Por fim usa a primeira função a partir da array feita
 function refazMatriz(event){
-  let array = (localStorage[event.target.innerText]).split(',')
+  let codigo = event.target.innerText
+  let array = JSON.parse(localStorage[codigo])
+  console.log(array)
 reconstoiMatriz(array)
 pixeisColoriveis()
 }
