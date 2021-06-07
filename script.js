@@ -114,6 +114,7 @@ function refazQuadro() {
     const corrigido = corrigeMaxMin(numeral);
     criaQuadro(corrigido);
     pixeisColoriveis();
+    clicaSegura();
   }
 }
 
@@ -200,6 +201,7 @@ function refazMatriz(event){
   let array = JSON.parse(localStorage[codigo])
 reconstoiMatriz(array)
 pixeisColoriveis()
+clicaSegura()
 }
 
 
@@ -225,3 +227,51 @@ picapi = JSON.parse(picapi)
 localStorage['Pikapi'] = JSON.stringify(picapi)
 
 criaBotoesStorage()
+
+//Para clicar e segurar
+
+mouse = false;
+function mousedown()
+{
+  mouse = true;
+  callEvent();
+  console.log('mouseup')
+}
+function mouseup()
+{
+  mouse =false;
+  console.log('mousedown')
+}
+function callEvent(event)
+{
+ if(mouse)
+ {
+   // do whatever you want
+   // it will continue executing until mouse is not released
+ 
+ if (event !== undefined){
+  const corSelecionada = document.querySelector('div.selected');
+  event.target.style.backgroundColor = corSelecionada.style.backgroundColor;
+ }
+
+
+
+   setTimeout("callEvent()",100);
+ }
+ else
+ return;
+}
+
+function clicaSegura(){
+
+  window.addEventListener('mouseup', mouseup);
+  
+
+  const pixels = document.querySelectorAll('.pixel');
+  for (let index = 0; index < pixels.length; index += 1) {
+    pixels[index].addEventListener('mousedown', mousedown);
+    pixels[index].addEventListener('mouseover', callEvent)
+  }
+}
+
+clicaSegura()
