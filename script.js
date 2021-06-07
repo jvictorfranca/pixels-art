@@ -235,12 +235,10 @@ function mousedown()
 {
   mouse = true;
   callEvent();
-  console.log('mouseup')
 }
 function mouseup()
 {
   mouse =false;
-  console.log('mousedown')
 }
 function callEvent(event)
 {
