@@ -77,7 +77,7 @@ function colorePixel(event) {
 function pixeisColoriveis() {
   const pixels = document.querySelectorAll('.pixel');
   for (let index = 0; index < pixels.length; index += 1) {
-    pixels[index].addEventListener('click', colorePixel);
+    pixels[index].addEventListener('mousedown', colorePixel);
   }
 }
 
@@ -263,11 +263,10 @@ function callEvent(event)
 function clicaSegura(){
 
   window.addEventListener('mouseup', mouseup);
-  
+  quadro.addEventListener('mousedown', mousedown)
 
   const pixels = document.querySelectorAll('.pixel');
   for (let index = 0; index < pixels.length; index += 1) {
-    pixels[index].addEventListener('mousedown', mousedown);
     pixels[index].addEventListener('mouseover', callEvent)
   }
 }
