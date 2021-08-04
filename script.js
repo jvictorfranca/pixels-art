@@ -19,7 +19,6 @@ function generateRandomColor() {
 }
 // fonte: https://css-tricks.com/snippets/javascript/random-hex-color/
 
-//TESTANDO O PUSH
 
 
 const n = 5;
